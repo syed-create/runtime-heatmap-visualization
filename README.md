@@ -2,7 +2,7 @@
 
 An interactive heatmap visualization built with React and ECharts to display runtime data from power sources (Battery, Solar, Genset combinations).
 
-![Runtime Report](https://img.shields.io/badge/React-18.2-blue) ![ECharts](https://img.shields.io/badge/ECharts-5.4-red) ![Vite](https://img.shields.io/badge/Vite-5.0-yellow)
+![Runtime Report](https://img.shields.io/badge/React-18.2-blue) ![ECharts](https://img.shields.io/badge/ECharts-5.4-red) ![Vite](https://img.shields.io/badge/Vite-6.4-purple)
 
 ## 🔗 Links
 
@@ -24,7 +24,7 @@ An interactive heatmap visualization built with React and ECharts to display run
 
 ### Prerequisites
 
--   Node.js 16+ and npm
+-   Node.js 18+ and npm (Node.js 20+ recommended)
 
 ### Installation
 
@@ -131,7 +131,7 @@ The application expects a JSON file at `/public/runtime.json` with the following
 -   **React 18.2** - UI framework
 -   **ECharts 5.4** - Charting library
 -   **echarts-for-react** - React wrapper for ECharts
--   **Vite 5.0** - Build tool and dev server
+-   **Vite 6.4** - Build tool and dev server
 -   **PropTypes** - Runtime type checking
 -   **Vanilla CSS** - Styling
 
@@ -172,7 +172,7 @@ The application expects a JSON file at `/public/runtime.json` with the following
 
 -   Clear browser cache and refresh
 -   Check that all dependencies are installed (`npm install`)
--   Ensure you're using Node.js 16 or higher
+-   Ensure you're using Node.js 18 or higher (20+ recommended)
 
 ## 📄 License
 
