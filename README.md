@@ -7,7 +7,7 @@ An interactive heatmap visualization built with React and ECharts to display run
 ## 🔗 Links
 
 -   **GitHub Repository**: https://github.com/syed-create/runtime-heatmap-visualization
--   **Live Demo**: Coming soon
+-   **Live Demo**: https://runtime-heatmap-visualization-1vsdlx0cz.vercel.app
 
 ## 🎯 Features
 
