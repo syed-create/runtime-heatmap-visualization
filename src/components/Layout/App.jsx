@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { Heatmap } from '../Chart'
 import Controls from '../Controls'
 import Legend from '../Legend'
+import ThemeToggle from '../ThemeToggle'
 import { POLLING_INTERVAL_MS, DATA_ENDPOINT, EXPORT_CHART_EVENT } from '../../utils'
 
 export default function App() {
@@ -76,13 +77,16 @@ export default function App() {
     <div className="app">
       <header className="header">
         <h1>Runtime Report</h1>
-        <Controls
-          range={range}
-          setRange={setRange}
-          onExport={handleExport}
-          live={live}
-          setLive={setLive}
-        />
+        <div className="header-controls">
+          <ThemeToggle />
+          <Controls
+            range={range}
+            setRange={setRange}
+            onExport={handleExport}
+            live={live}
+            setLive={setLive}
+          />
+        </div>
       </header>
 
       <main>

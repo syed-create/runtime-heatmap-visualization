@@ -1,6 +1,7 @@
 import React, { useMemo, useRef, useEffect } from 'react'
 import ReactECharts from 'echarts-for-react'
 import PropTypes from 'prop-types'
+import { useTheme } from '../../contexts'
 import {
   CHART_HEIGHT,
   CHART_ANIMATION_DURATION,
@@ -20,6 +21,7 @@ function buildMetaMap(meta) {
 }
 
 function HeatmapChart({ data, meta, dateRange, visibleSources }) {
+  const { theme } = useTheme()
   const metaMap = useMemo(() => buildMetaMap(meta), [meta])
   const chartRef = useRef(null)
 
@@ -99,12 +101,28 @@ function HeatmapChart({ data, meta, dateRange, visibleSources }) {
   }, [metaMap])
 
   const option = useMemo(() => {
+    const isDark = theme === 'dark'
+    const textColor = isDark ? '#f1f5f9' : '#111111'
+    const bgColor = isDark ? '#1e293b' : '#ffffff'
+    const borderColor = isDark ? '#334155' : '#e2e8f0'
+    const gridColor = isDark ? '#334155' : '#e2e8f0'
+    const axisLabelColor = isDark ? '#cbd5e1' : '#475569'
+
     return {
+      backgroundColor: bgColor,
       animation: true,
       animationDuration: CHART_ANIMATION_DURATION,
       animationEasing: 'cubicOut',
+      textStyle: {
+        color: textColor
+      },
       tooltip: {
         position: 'top',
+        backgroundColor: isDark ? '#1e293b' : '#ffffff',
+        borderColor: borderColor,
+        textStyle: {
+          color: textColor
+        },
         formatter: function (params) {
           const timeIdx = params.data[0]
           const dateIdx = params.data[1]
@@ -135,7 +153,31 @@ function HeatmapChart({ data, meta, dateRange, visibleSources }) {
           top: '95%',
           height: 12,
           start: 0,
-          end: 100
+          end: 100,
+          textStyle: {
+            color: textColor
+          },
+          borderColor: borderColor,
+          fillerColor: isDark ? 'rgba(59, 130, 246, 0.2)' : 'rgba(37, 99, 235, 0.1)',
+          handleStyle: {
+            color: isDark ? '#3b82f6' : '#2563eb'
+          },
+          dataBackground: {
+            lineStyle: {
+              color: gridColor
+            },
+            areaStyle: {
+              color: isDark ? 'rgba(51, 65, 85, 0.3)' : 'rgba(226, 232, 240, 0.3)'
+            }
+          },
+          selectedDataBackground: {
+            lineStyle: {
+              color: isDark ? '#3b82f6' : '#2563eb'
+            },
+            areaStyle: {
+              color: isDark ? 'rgba(59, 130, 246, 0.3)' : 'rgba(37, 99, 235, 0.2)'
+            }
+          }
         },
         {
           type: 'slider',
@@ -144,13 +186,45 @@ function HeatmapChart({ data, meta, dateRange, visibleSources }) {
           width: 12,
           start: 0,
           end: 100,
-          orient: 'vertical'
+          orient: 'vertical',
+          textStyle: {
+            color: textColor
+          },
+          borderColor: borderColor,
+          fillerColor: isDark ? 'rgba(59, 130, 246, 0.2)' : 'rgba(37, 99, 235, 0.1)',
+          handleStyle: {
+            color: isDark ? '#3b82f6' : '#2563eb'
+          },
+          dataBackground: {
+            lineStyle: {
+              color: gridColor
+            },
+            areaStyle: {
+              color: isDark ? 'rgba(51, 65, 85, 0.3)' : 'rgba(226, 232, 240, 0.3)'
+            }
+          },
+          selectedDataBackground: {
+            lineStyle: {
+              color: isDark ? '#3b82f6' : '#2563eb'
+            },
+            areaStyle: {
+              color: isDark ? 'rgba(59, 130, 246, 0.3)' : 'rgba(37, 99, 235, 0.2)'
+            }
+          }
         }
       ],
       toolbox: {
         show: true,
+        iconStyle: {
+          borderColor: isDark ? '#64748b' : '#94a3b8'
+        },
+        emphasis: {
+          iconStyle: {
+            borderColor: isDark ? '#94a3b8' : '#64748b'
+          }
+        },
         feature: {
-          saveAsImage: { title: 'Save' },
+          saveAsImage: { title: 'Save', backgroundColor: bgColor },
           restore: { title: 'Restore' },
           dataZoom: { title: 'Zoom' }
         }
@@ -158,14 +232,53 @@ function HeatmapChart({ data, meta, dateRange, visibleSources }) {
       xAxis: {
         type: 'category',
         data: times,
-        splitArea: { show: true },
-        axisLabel: { rotate: 45, interval: 'auto', fontSize: 11 }
+        splitArea: {
+          show: true,
+          areaStyle: {
+            color: [isDark ? 'rgba(51, 65, 85, 0.3)' : 'rgba(226, 232, 240, 0.3)', isDark ? 'rgba(51, 65, 85, 0.1)' : 'rgba(226, 232, 240, 0.1)']
+          }
+        },
+        axisLabel: {
+          rotate: 45,
+          interval: 'auto',
+          fontSize: 11,
+          color: axisLabelColor
+        },
+        axisLine: {
+          lineStyle: {
+            color: gridColor
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: gridColor
+          }
+        }
       },
       yAxis: {
         type: 'category',
         data: dates,
-        splitArea: { show: true },
-        axisLabel: { interval: 'auto', fontSize: 11 }
+        splitArea: {
+          show: true,
+          areaStyle: {
+            color: [isDark ? 'rgba(51, 65, 85, 0.3)' : 'rgba(226, 232, 240, 0.3)', isDark ? 'rgba(51, 65, 85, 0.1)' : 'rgba(226, 232, 240, 0.1)']
+          }
+        },
+        axisLabel: {
+          interval: 'auto',
+          fontSize: 11,
+          color: axisLabelColor
+        },
+        axisLine: {
+          lineStyle: {
+            color: gridColor
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: gridColor
+          }
+        }
       },
       visualMap: {
         show: false,  // Hide the built-in visualMap
@@ -184,14 +297,14 @@ function HeatmapChart({ data, meta, dateRange, visibleSources }) {
           progressiveThreshold: PROGRESSIVE_RENDER_THRESHOLD,
           emphasis: {
             itemStyle: {
-              borderColor: '#000',
+              borderColor: isDark ? '#64748b' : '#000',
               borderWidth: 1
             }
           }
         }
       ]
     }
-  }, [dates, times, seriesData, visualMapPieces, metaMap])
+  }, [dates, times, seriesData, visualMapPieces, metaMap, theme])
 
   useEffect(() => {
     const handler = () => {

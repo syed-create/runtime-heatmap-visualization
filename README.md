@@ -12,6 +12,7 @@ An interactive heatmap visualization built with React and ECharts to display run
 ## 🎯 Features
 
 -   **Interactive Heatmap**: Grid-based visualization showing runtime sources over time
+-   **Dark/Light Mode**: Toggle between dark and light themes with persistent preference (default: dark mode)
 -   **Date Range Filtering**: Select start and end dates to focus on specific periods
 -   **Interactive Legend**: Click legend items to toggle visibility of specific power sources
 -   **Zoom & Pan**: Built-in zoom controls with mouse wheel and drag support
@@ -19,6 +20,7 @@ An interactive heatmap visualization built with React and ECharts to display run
 -   **Live Updates**: Enable polling to automatically refresh data every 30 seconds
 -   **Tooltips**: Hover over cells to see detailed information including date, time, source, and description
 -   **Performance Optimized**: Progressive rendering for large datasets with lazy loading
+-   **Responsive Design**: Modern UI with smooth transitions and accessible controls
 
 ## 🚀 Quick Start
 
@@ -141,16 +143,19 @@ The application expects a JSON file at `/public/runtime.json` with the following
 -   **Memoization**: useMemo and React.memo to prevent unnecessary re-renders
 -   **Progressive Rendering**: Large datasets rendered in chunks (5,000 points per chunk)
 -   **Optimized Re-renders**: useCallback for stable function references
+-   **Theme Context**: React Context API for efficient theme management
 
 ## 🎨 UI/UX Features
 
--   Clean, modern interface
--   Responsive layout
+-   Clean, modern interface with dark/light mode support
+-   Responsive layout that works on all screen sizes
 -   Accessible keyboard navigation for legend
 -   Smooth animations and transitions
 -   Visual feedback on interactions
 -   Error states with retry functionality
 -   Loading states
+-   Theme persistence (saves preference in localStorage)
+-   Enhanced date picker UX (entire input is clickable)
 
 ## 📝 Available Scripts
 
