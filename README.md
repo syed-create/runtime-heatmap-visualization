@@ -4,6 +4,11 @@ An interactive heatmap visualization built with React and ECharts to display run
 
 ![Runtime Report](https://img.shields.io/badge/React-18.2-blue) ![ECharts](https://img.shields.io/badge/ECharts-5.4-red) ![Vite](https://img.shields.io/badge/Vite-5.0-yellow)
 
+## 🔗 Links
+
+-   **GitHub Repository**: https://github.com/syed-create/runtime-heatmap-visualization
+-   **Live Demo**: Coming soon
+
 ## 🎯 Features
 
 -   **Interactive Heatmap**: Grid-based visualization showing runtime sources over time
@@ -26,8 +31,8 @@ An interactive heatmap visualization built with React and ECharts to display run
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
-cd Assignment
+git clone https://github.com/syed-create/runtime-heatmap-visualization.git
+cd runtime-heatmap-visualization
 ```
 
 2. Install dependencies:
@@ -61,17 +66,23 @@ npm run preview
 ## 📁 Project Structure
 
 ```
-Assignment/
+runtime-heatmap-visualization/
 ├── src/
 │   ├── components/
-│   │   ├── Controls.jsx        # Date range, export, and live toggle controls
-│   │   └── Legend.jsx          # Interactive legend component
-│   ├── App.jsx                 # Main application component
-│   ├── Heatmap.jsx            # Lazy-loaded wrapper for HeatmapChart
-│   ├── HeatmapChart.jsx       # Core ECharts heatmap implementation
-│   ├── constants.js           # Application constants
-│   ├── main.jsx               # Application entry point
-│   └── styles.css             # Global styles
+│   │   ├── Chart/             # Chart-related components
+│   │   │   ├── Heatmap.jsx
+│   │   │   └── HeatmapChart.jsx
+│   │   ├── Controls/          # Control panel components
+│   │   │   └── Controls.jsx
+│   │   ├── Legend/            # Legend components
+│   │   │   └── Legend.jsx
+│   │   └── Layout/            # Layout components
+│   │       └── App.jsx
+│   ├── utils/                 # Utilities and constants
+│   │   └── constants.js
+│   ├── styles/                # Stylesheets
+│   │   └── styles.css
+│   └── main.jsx               # Application entry point
 ├── public/
 │   └── runtime.json           # Runtime data (meta + data)
 ├── index.html
